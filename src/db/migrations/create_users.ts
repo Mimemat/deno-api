@@ -1,14 +1,9 @@
-import { Dex } from '../../../deps.ts';
+import { dex } from '../../config/dex.ts';
 
-import { dexConfig } from '../../config/dex.ts';
-
-let dex = Dex(dexConfig);
-
-
-const tableQuery = dex.schema.createTable("users", (table: any) => {
-    table.increments("id").primary(); 
-    table.string("username", 32); 
-    table.string("firstName"); 
+const tableQuery = dex.schema.createTable('users', (table: any) => {
+    table.increments('id').primary(); 
+    table.string('username', 32).notNullable(); 
+    table.string('email').notNullable();
     table.timestamps(null, true); 
 }).toString();
 
